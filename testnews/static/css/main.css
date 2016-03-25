@@ -1,0 +1,25 @@
+.publish-time {
+  color: #f56276;
+  font-size: 15px;
+}
+
+.brand-name {
+
+}
+
+.one-publish {
+  border: 1px solid #ff6347;
+  border-radius: 12px;
+  padding: 13px;
+  margin-bottom: 15px;
+}
+
+.publish-header {
+  font-family: New Century Schoolbook, serif;
+  color: #8B0000;
+  font-size: 25px;
+}
+
+.comments-number {
+  color: #d50000;
+}
