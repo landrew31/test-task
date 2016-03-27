@@ -1,0 +1,82 @@
+{% extends "testnews/base.html" %}
+
+{% load static from staticfiles %}
+
+{% block content %}
+
+
+
+
+<div class="section one-publish row">
+  <article>
+    <header>
+      <a class="publish-header" href="">{{ new.news.title }}</a>
+      <p class="publish-time">Published: {{ new.news.adding_time }}
+        <a class="comments-number right" href="#comments">{{ new.comments|length }} {% if new.comments|length == 1 %}Comment
+          {% else %}Comments{% endif %}</a></p>
+    </header>
+    <p>
+      {{ new.news.news_content|linebreaksbr }}
+    </p>
+    <footer>
+
+    </footer>
+  </article>
+
+  <div class="divider"></div>
+
+
+  <div class="add-comment" id="add_comment">
+    <div class="comment-form">
+      <div class="row">
+        <p class="center-align center-info">Add your comment:</p>
+        <form class="col s12" action="{% url "add_comment" new.news.id %}" method="post">
+          {% csrf_token %}
+          <div class="row">
+            <div class="input-field col s6">
+              <input name="commented_by" id="commented_by" type="text" length="30" required>
+              <label for="commented_by">Your name</label>
+            </div>
+          </div>
+          <div class="row">
+            <div class="input-field col s12">
+              <textarea name="comment_content" id="comment_content" class="materialize-textarea" length="300" required></textarea>
+              <label for="comment_content">Your comment</label>
+            </div>
+            <div class="input-field col s12 ">
+              <button class="btn waves-effect waves-light green lighten-1" type="submit" name="add_comment">Add Comment
+                <i class="material-icons right">send</i>
+              </button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="divider"></div>
+  <div class="row" id="comments">
+    <p class="center-align"><a class="center-info">{{ new.comments|length }} {% if new.comments|length == 1 %}Comment
+      {% else %}Comments{% endif %}</a></p>
+  </div>
+
+  {% for comment in new.comments %}
+  <div class="one-comment">
+      <div class="row">
+      <div class="col s4 who-commented">
+        <p class="comments-number">{{ comment.commented_by }}</P>
+        <a class="publish-time left">{{ comment.commenting_time }}</a>
+      </div>
+      <div class="col s8 comment-text">
+        <p class="left-align">{{ comment.comment_content }}</p>
+      </div>
+    </div>
+
+  </div>
+  {% endfor %}
+
+</div>
+
+
+{% endblock %}

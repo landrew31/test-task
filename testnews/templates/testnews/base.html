@@ -10,6 +10,7 @@
 
 	<!-- Include Styles -->
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.5/css/materialize.min.css">
+	<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <!--	<link rel='stylesheet' href='https://cdn.jsdelivr.net/bootstrap/3.3.0/css/bootstrap.min.css'>-->
 
 
@@ -28,14 +29,14 @@
 		<div class="row" id="header">
 
 			<!-- Logo -->
-			<nav class="red">
+			<nav class="green">
 				<div class="nav-wrapper container">
 					<div class="row">
 						<div class="col s8">
-						  <h4 class="brand-name">NEWS MODULE</h4>
+						  <h4 class="brand-name"><a href="{% url "home" %}">NEWS MODULE</a><small>.{{ page_title }}</small></h4>
 						</div>
 						<div class="right">
-							<a class="red lighten-3 waves-effect waves-light btn">Add News</a>
+							<a class="red lighten-2 waves-effect waves-light btn" href="{% url "add_news" %}">Add News</a>
 						</div>
 					</div>
 				</div>
@@ -65,6 +66,7 @@
 				{% block content %}{% endblock content %}
 				</div>
 
+
 			</div>
 		</div>
 		<!-- End Content Columns -->
@@ -72,11 +74,11 @@
 		<!-- Start Footer -->
 
 		{% block footer %}
-		<footer class="page-footer">
+		<footer class="page-footer green darken-4">
 			<div class="footer-copyright">
 				<div class="container">
 					© 2014 Copyright Text
-					<a class="grey-text text-lighten-4 right" href="#!">News Module</a>
+					<a class="green-text text-lighten-2 right" href="#!">News Module</a>
 				</div>
 			</div>
 		</footer>

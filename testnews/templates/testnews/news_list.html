@@ -5,121 +5,33 @@
 {% block content %}
 
 
+{% for new in news %}
 <div class="section one-publish">
   <article>
     <header>
-      <a class="publish-header" href="">Mingling with Professional 3D Designers at the i.materialise Meetup</a>
-      <p class="publish-time">Published: 2009-10-09<a class="comments-number right" href="">45 Comments</a></p>
+      <a class="publish-header" href="{% url "one_news_show" new.news.id %}">{{ new.news.title }}</a>
+      <p class="publish-time">Published: {{ new.news.adding_time }}
+        <a class="comments-number right" href="{% url "one_news_show" new.news.id %}#comments">{{ new.comments }} Comments</a></p>
     </header>
     <blockquote>
-      As the newest copywriter at Materialise, I’ve been trying to learn
-      as much as I can about the fascinating industry of 3D Printing
-      since I started my job. A great way for me to get acquainted with
-      the consumer side of Materialise was to participate in the i.materialise
-      meetup last week!
-    </blockquote>
-    <footer>
-      <a class="waves-effect waves-light btn red lighten-1">Add Comment</a>
-      <a class="waves-effect waves-light btn right red darken-2">Read More</a>
-    </footer>
-  </article>
-</div>
+      {% if new.news.news_short %}
+        {{ new.news.news_short }}
+      {% else %}
+        {{ new.news.news_content|truncatechars:250 }}
+      {% endif %}
 
-<div class="section one-publish">
-  <article>
-    <header>
-      <h4 class="publish-header">Mingling with Professional 3D Designers at the i.materialise Meetup<h4>
-      <p class="publish-time">Published: 2009-10-09<a class="comments-number right" href="">45 Comments</a></p>
-    </header>
-    <blockquote>
-      As the newest copywriter at Materialise, I’ve been trying to learn
-      as much as I can about the fascinating industry of 3D Printing
-      since I started my job. A great way for me to get acquainted with
-      the consumer side of Materialise was to participate in the i.materialise
-      meetup last week!
-    </blockquote>
-    <footer>
-      <a class="waves-effect waves-light btn red lighten-1">Add Comment</a>
-      <a class="waves-effect waves-light btn right red darken-2">Read More</a>
-    </footer>
-  </article>
-</div>
-<div class="section one-publish">
-  <article>
-    <header>
-      <h4 class="publish-header">Mingling with Professional 3D Designers at the i.materialise Meetup<h4>
-      <p class="publish-time">Published: 2009-10-09<a class="comments-number right" href="">45 Comments</a></p>
-    </header>
-    <blockquote>
-      As the newest copywriter at Materialise, I’ve been trying to learn
-      as much as I can about the fascinating industry of 3D Printing
-      since I started my job. A great way for me to get acquainted with
-      the consumer side of Materialise was to participate in the i.materialise
-      meetup last week!
-    </blockquote>
-    <footer>
-      <a class="waves-effect waves-light btn red lighten-1">Add Comment</a>
-      <a class="waves-effect waves-light btn right red darken-2">Read More</a>
-    </footer>
-  </article>
-</div>
-<div class="section one-publish">
-  <article>
-    <header>
-      <h4 class="publish-header">Mingling with Professional 3D Designers at the i.materialise Meetup<h4>
-      <p class="publish-time">Published: 2009-10-09<a class="comments-number right" href="">45 Comments</a></p>
-    </header>
-    <blockquote>
-      As the newest copywriter at Materialise, I’ve been trying to learn
-      as much as I can about the fascinating industry of 3D Printing
-      since I started my job. A great way for me to get acquainted with
-      the consumer side of Materialise was to participate in the i.materialise
-      meetup last week!
-    </blockquote>
-    <footer>
-      <a class="waves-effect waves-light btn red lighten-1">Add Comment</a>
-      <a class="waves-effect waves-light btn right red darken-2">Read More</a>
-    </footer>
-  </article>
-</div>
-<div class="section one-publish">
-  <article>
-    <header>
-      <h4 class="publish-header">Mingling with Professional 3D Designers at the i.materialise Meetup<h4>
-      <p class="publish-time">Published: 2009-10-09<a class="comments-number right" href="">45 Comments</a></p>
-    </header>
-    <blockquote>
-      As the newest copywriter at Materialise, I’ve been trying to learn
-      as much as I can about the fascinating industry of 3D Printing
-      since I started my job. A great way for me to get acquainted with
-      the consumer side of Materialise was to participate in the i.materialise
-      meetup last week!
-    </blockquote>
-    <footer>
-      <a class="waves-effect waves-light btn red lighten-1">Add Comment</a>
-      <a class="waves-effect waves-light btn right red darken-2">Read More</a>
-    </footer>
-  </article>
-</div>
-<div class="section one-publish">
-  <article>
-    <header>
-      <h4 class="publish-header">Mingling with Professional 3D Designers at the i.materialise Meetup<h4>
-      <p class="publish-time">Published: 2009-10-09<a class="comments-number right" href="">45 Comments</a></p>
-    </header>
-    <blockquote>
-      As the newest copywriter at Materialise, I’ve been trying to learn
-      as much as I can about the fascinating industry of 3D Printing
-      since I started my job. A great way for me to get acquainted with
-      the consumer side of Materialise was to participate in the i.materialise
-      meetup last week!
-    </blockquote>
-    <footer>
-      <a class="waves-effect waves-light btn red lighten-1">Add Comment</a>
-      <a class="waves-effect waves-light btn right red darken-2">Read More</a>
-    </footer>
-  </article>
-</div>
 
+    </blockquote>
+    <footer>
+      <a class="waves-effect waves-light btn green lighten-1" href="{% url "one_news_show" new.news.id %}#add_comment">Add Comment</a>
+      <a class="waves-effect waves-light btn right green darken-2" href="{% url "one_news_show" new.news.id %}">Read More</a>
+    </footer>
+  </article>
+</div>
+{% endfor %}
+
+{% with object_list=news %}
+  {% include "testnews/pagination.html" %}
+{% endwith %}
 
 {% endblock %}

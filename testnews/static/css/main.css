@@ -8,7 +8,7 @@
 }
 
 .one-publish {
-  border: 1px solid #ff6347;
+  border: 1px solid #00e676;
   border-radius: 12px;
   padding: 13px;
   margin-bottom: 15px;
@@ -16,10 +16,26 @@
 
 .publish-header {
   font-family: New Century Schoolbook, serif;
-  color: #8B0000;
+  color: #004d40;
   font-size: 25px;
 }
 
 .comments-number {
   color: #d50000;
+}
+
+.center-info {
+  color: #d50000;
+  font-size: 15px;
+}
+
+.one-comment {
+  border-top: 1px solid #a5d6a7;
+  border-bottom: 1px solid #a5d6a7;
+  margin-bottom: 5px;
+}
+
+.comment-text {
+  border-left: 1px solid #c8e6c9;
+  padding: 10px;
 }
