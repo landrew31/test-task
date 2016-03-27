@@ -37,7 +37,7 @@ class NewsView(TemplateView):
 
         context = super(NewsView, self).get_context_data(**kwargs)
 
-        queryset = News.objects.all().order_by('pk')
+        queryset = News.objects.all().order_by('pk').reverse()
 
         news = []
 
